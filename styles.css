@@ -1,0 +1,546 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --apple-black: #1d1d1f;
+    --apple-gray: #86868b;
+    --apple-light-gray: #f5f5f7;
+    --apple-blue: #0071e3;
+    --apple-red: #FF3B30;
+    --apple-white: #ffffff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--apple-black);
+    background-color: var(--apple-white);
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+}
+
+/* Notification Overlay */
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 80px;
+    z-index: 10000;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.notification-overlay.hidden {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.notification-container {
+    background: var(--apple-white);
+    border-radius: 16px;
+    max-width: 380px;
+    width: 88%;
+    padding: 0;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease-out;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.notification-logo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    text-align: center;
+}
+
+.apple-logo-popup {
+    width: 45px;
+    height: 45px;
+    color: var(--apple-white);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding: 20px 24px 0 24px;
+}
+
+.alert-icon {
+    width: 26px;
+    height: 26px;
+}
+
+.notification-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--apple-black);
+    letter-spacing: -0.02em;
+}
+
+.notification-body {
+    margin-bottom: 20px;
+    padding: 0 24px;
+}
+
+.device-info {
+    background: var(--apple-light-gray);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--apple-gray);
+    margin: 0;
+}
+
+.info-value {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--apple-black);
+    margin: 0;
+    text-align: right;
+    max-width: 60%;
+    word-break: break-word;
+}
+
+.notification-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--apple-black);
+    margin-bottom: 10px;
+}
+
+.notification-text.centered {
+    text-align: center;
+}
+
+.notification-text strong {
+    font-weight: 600;
+}
+
+.notification-info {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--apple-gray);
+    margin-top: 12px;
+}
+
+.notification-info.centered {
+    text-align: center;
+}
+
+.notification-actions {
+    padding: 0 24px 24px 24px;
+}
+
+.call-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--apple-blue);
+    color: var(--apple-white);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.call-button:hover {
+    background: #0077ED;
+    transform: scale(1.02);
+}
+
+.call-button:active {
+    transform: scale(0.98);
+}
+
+.phone-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Header Styles */
+.apple-header {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.nav-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 22px;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo svg {
+    color: var(--apple-light-gray);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.logo:hover svg {
+    opacity: 1;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 33px;
+    margin: 0;
+}
+
+.nav-list li a {
+    color: var(--apple-light-gray);
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.nav-list li a:hover {
+    opacity: 1;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-icon svg {
+    color: var(--apple-light-gray);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.nav-icon:hover svg {
+    opacity: 1;
+}
+
+/* Main Content */
+.main-content {
+    min-height: calc(100vh - 44px);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 100%);
+    padding: 60px 20px 80px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.apple-logo-large {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    color: var(--apple-black);
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.003em;
+    line-height: 1.08349;
+    color: var(--apple-black);
+}
+
+/* Product Section */
+.product-section {
+    padding: 60px 20px;
+    background: var(--apple-white);
+}
+
+.product-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: var(--apple-light-gray);
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-card h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--apple-black);
+}
+
+.product-price {
+    font-size: 14px;
+    color: var(--apple-gray);
+    margin-bottom: 16px;
+}
+
+.buy-button {
+    display: inline-block;
+    background: var(--apple-blue);
+    color: var(--apple-white);
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.buy-button:hover {
+    background: #0077ED;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.apple-footer {
+    background: var(--apple-light-gray);
+    padding: 20px;
+    border-top: 1px solid #d2d2d7;
+}
+
+.footer-content {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 12px;
+    color: var(--apple-gray);
+    margin-bottom: 8px;
+}
+
+.footer-text a {
+    color: var(--apple-blue);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: var(--apple-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none;
+    }
+    
+    .notification-overlay {
+        padding-top: 60px;
+        align-items: flex-start;
+    }
+    
+    .notification-container {
+        max-width: 340px;
+        width: 92%;
+    }
+    
+    .notification-logo {
+        padding: 16px;
+    }
+    
+    .apple-logo-popup {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .notification-header {
+        padding: 16px 20px 0 20px;
+        margin-bottom: 12px;
+    }
+    
+    .notification-header h2 {
+        font-size: 18px;
+    }
+    
+    .alert-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .notification-body {
+        padding: 0 20px;
+        margin-bottom: 16px;
+    }
+    
+    .notification-actions {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .device-info {
+        padding: 8px 10px;
+        margin: 6px 0;
+    }
+    
+    .info-label,
+    .info-value {
+        font-size: 11px;
+    }
+    
+    .notification-text {
+        font-size: 13px;
+    }
+    
+    .notification-info {
+        font-size: 10px;
+    }
+    
+    .call-button {
+        font-size: 13px;
+        padding: 11px 16px;
+    }
+    
+    .phone-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .hero-section {
+        padding: 40px 20px 60px;
+    }
+    
+    .hero-section h1 {
+        font-size: 32px;
+    }
+    
+    .apple-logo-large {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .notification-overlay {
+        padding-top: 50px;
+    }
+    
+    .notification-container {
+        max-width: 310px;
+        width: 94%;
+    }
+    
+    .hero-section h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 360px) {
+    .notification-container {
+        max-width: 290px;
+    }
+    
+    .notification-text {
+        font-size: 12px;
+    }
+    
+    .call-button {
+        font-size: 12px;
+        padding: 10px 14px;
+    }
+}
